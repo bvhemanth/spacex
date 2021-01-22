@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SpacexService } from '../services/spacex.service';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-dashbard',
   templateUrl: './dashbard.component.html',
@@ -17,10 +18,14 @@ export class DashbardComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+  getData(){
     this.spacex.getAll().subscribe((data)=>{
       this.launches=data;
       console.log(data);
-    })    
+    })  
   }
 
   filter(){
